@@ -1,5 +1,5 @@
 package com.example.hhd;
-class Word {
+public class Word {
     private String word;
     private String definition;
     public Word(String word, String definition){
