@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="userInputWord" layoutX="15.0" layoutY="16.0" prefHeight="50.0" prefWidth="250.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" />
+      <Button layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
+      <Button layoutX="400.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
+      <Button layoutX="520.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
+      <Button layoutX="640.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
+      <WebView fx:id="definition" layoutX="280.0" layoutY="80.0" prefHeight="454.0" prefWidth="460.0" />
+      <ToggleButton layoutX="771.0" layoutY="16.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="ToggleButton" />
+      <Button layoutX="771.0" layoutY="80.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
+      <Button layoutX="771.0" layoutY="130.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
+      <Button layoutX="771.0" layoutY="180.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
+      <Button layoutX="771.0" layoutY="371.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
+   </children>
+</AnchorPane>
