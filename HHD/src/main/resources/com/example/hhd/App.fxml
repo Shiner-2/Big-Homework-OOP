@@ -8,10 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.AppController">
    <children>
-      <TextField fx:id="userInputWord" layoutX="15.0" layoutY="16.0" prefHeight="50.0" prefWidth="250.0">
+      <TextField fx:id="userInputWord" layoutX="15.0" layoutY="16.0" onKeyPressed="#onUserTyping" prefHeight="50.0" prefWidth="250.0">
          <font>
             <Font size="15.0" />
          </font>
