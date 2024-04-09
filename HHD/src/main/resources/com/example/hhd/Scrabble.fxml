@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.ScrabbleController">
+   <children>
+      <HBox layoutX="190.0" layoutY="526.0" prefHeight="60.0" prefWidth="400.0">
+         <children>
+            <ImageView fx:id="box1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box4" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box5" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box6" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="box7" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <Button fx:id="btnstart" layoutX="302.0" layoutY="94.0" mnemonicParsing="false" onAction="#startGame" prefHeight="105.0" prefWidth="196.0" text="Button" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#LoadApp" text="Button" />
+   </children>
+</AnchorPane>
