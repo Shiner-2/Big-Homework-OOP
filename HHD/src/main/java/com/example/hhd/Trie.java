@@ -74,6 +74,31 @@ public class Trie {
     }
 
     /**
+     * Delete word from trie.
+     * @param word is the word to be deleted
+     * @return true of successfully delete word, false otherwise
+     */
+    public boolean find_word(String word_target) {
+        TrieNode pNode = getRoot();
+
+        for (int i = 0; i < word_target.length(); i++) {
+            char currentChar = word_target.charAt(i);
+
+            if (!pNode.next.containsKey(currentChar)) {
+                return false;
+            }
+
+            pNode = pNode.next.get(currentChar);
+        }
+
+        if (pNode.current_word == null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Search words that match target.
      * @param target is the prefix
      * @param recommended_size is size of the list

@@ -40,4 +40,8 @@ public class TrieDictionary extends Dictionary {
         return trie.search_word(target, 10);
     }
 
+    @Override
+    public boolean contains(String s) {
+        return trie.find_word(s);
+    }
 }

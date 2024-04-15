@@ -28,6 +28,11 @@ public abstract class Dictionary {
             public ArrayList<Word> search(String target) {
                 return null;
             }
+
+            @Override
+            public boolean contains(String word_target) {
+                return false;
+            }
         };
     }
 
@@ -36,4 +41,6 @@ public abstract class Dictionary {
     public abstract boolean delete(Word word);
 
     public abstract ArrayList<Word> search(String target);
+
+    public abstract boolean contains(String word_target);
 }
