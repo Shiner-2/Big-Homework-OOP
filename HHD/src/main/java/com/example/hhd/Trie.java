@@ -46,8 +46,9 @@ public class Trie {
     /**
      * Delete word from trie.
      * @param word is the word to be deleted
+     * @return true of successfully delete word, false otherwise
      */
-    public void delete_word(Word word) {
+    public boolean delete_word(Word word) {
         TrieNode pNode = getRoot();
 
         String word_target = word.getWord();
@@ -57,7 +58,7 @@ public class Trie {
 
             if (!pNode.next.containsKey(currentChar)) {
                 System.out.println("This word has not been inserted");
-                return ;
+                return false;
             }
 
             pNode = pNode.next.get(currentChar);
@@ -65,10 +66,36 @@ public class Trie {
 
         if (pNode.current_word == null) {
             System.out.println("This word has not been inserted");
-            return ;
+            return false;
         }
 
         pNode.current_word = null;
+        return true;
+    }
+
+    /**
+     * Delete word from trie.
+     * @param word is the word to be deleted
+     * @return true of successfully delete word, false otherwise
+     */
+    public boolean find_word(String word_target) {
+        TrieNode pNode = getRoot();
+
+        for (int i = 0; i < word_target.length(); i++) {
+            char currentChar = word_target.charAt(i);
+
+            if (!pNode.next.containsKey(currentChar)) {
+                return false;
+            }
+
+            pNode = pNode.next.get(currentChar);
+        }
+
+        if (pNode.current_word == null) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -107,5 +134,10 @@ public class Trie {
         }
 
         return result;
+    }
+
+    ArrayList<Word> search_all_word(String target) {
+        int MAX_WORD = 1000000000;
+        return search_word(target, MAX_WORD);
     }
 }
