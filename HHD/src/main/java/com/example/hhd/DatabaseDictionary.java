@@ -30,4 +30,9 @@ public class DatabaseDictionary extends Dictionary {
     public ArrayList<Word> search(String target) {
         return new ArrayList<>();
     }
+
+    @Override
+    public boolean contains(String word_target) {
+        return false;
+    }
 }
