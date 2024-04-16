@@ -30,4 +30,5 @@ public class DatabaseDictionary extends Dictionary {
     public ArrayList<Word> search(String target) {
         return new ArrayList<>();
     }
+
 }
