@@ -31,4 +31,8 @@ public class DatabaseDictionary extends Dictionary {
         return new ArrayList<>();
     }
 
+    @Override
+    public boolean contains(String word_target) {
+        return false;
+    }
 }
