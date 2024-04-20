@@ -32,6 +32,7 @@ public class WordleController implements Initializable {
             a.setContentText("Please enter " + sz.toString() + " letters!");
             a.show();
         } else{
+            //TODO: Contains làm ntn ???
             if(!trie.contains(in)) {
                 WordleWordController lt = new WordleWordController(getSz());
                 lt.setWord(in, HiddenWord);
@@ -55,7 +56,6 @@ public class WordleController implements Initializable {
             a.setContentText("Better luck next time");
             a.show();
         }
-
     }
 
     public void setSz(Integer sz) {

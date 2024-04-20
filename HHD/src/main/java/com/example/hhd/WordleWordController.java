@@ -18,7 +18,7 @@ public class WordleWordController extends VBox {
     public WordleWordController(Integer sz) {
         this.sz = sz;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "wordle-word.fxml"));
+                "Wordle-word.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

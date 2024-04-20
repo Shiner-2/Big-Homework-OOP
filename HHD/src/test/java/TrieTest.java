@@ -22,6 +22,8 @@ public class TrieTest {
 
         Helper.showWordDefinition(w);
 
+        System.out.println(res.contains("impossible"));
+
         System.out.println(w.getWord());
         System.out.println(w.getDefinition());
     }
