@@ -75,7 +75,7 @@ public class Trie {
 
     /**
      * Delete word from trie.
-     * @param word is the word to be deleted
+     * @param word_target is the word to be deleted
      * @return true of successfully delete word, false otherwise
      */
     public boolean find_word(String word_target) {
@@ -137,7 +137,6 @@ public class Trie {
     }
 
     ArrayList<Word> search_all_word(String target) {
-        int MAX_WORD = 1000000000;
-        return search_word(target, MAX_WORD);
+        return search_word(target, Integer.MAX_VALUE);
     }
 }

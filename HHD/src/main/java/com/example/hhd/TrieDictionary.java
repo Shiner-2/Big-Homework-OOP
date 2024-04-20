@@ -21,6 +21,9 @@ public class TrieDictionary extends Dictionary {
     public void import_from_file(File file) throws IOException {
         for (Word w : Helper.getWordFromFile(file)) {
             insert(w);
+            System.out.println(w.getWord());
+            System.out.println(w.getDefinition());
+            Helper.showWordDefinition(w);
         }
 
     }
@@ -40,6 +43,9 @@ public class TrieDictionary extends Dictionary {
         return trie.search_word(target, 10);
     }
 
+    public ArrayList<Word> allWordList() {
+        return trie.search_all_word("");
+    }
     @Override
     public boolean contains(String s) {
         return trie.find_word(s);

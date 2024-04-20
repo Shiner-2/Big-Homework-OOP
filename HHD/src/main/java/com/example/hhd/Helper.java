@@ -8,9 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import org.apache.commons.text.StringEscapeUtils;
 
 public class Helper {
     /**
@@ -37,18 +34,51 @@ public class Helper {
      * @return word
      */
     public static Word getWordFromLines(List<String> lines) {
-        if (lines.isEmpty()) {
+        if (lines.isEmpty() || String.join("", lines).isBlank()) {
             return null;
         }
+        System.out.println("FUCK OFF:" + String.join("\n",  lines));
+        int e = lines.get(0).indexOf('/') - 1;
+        if (e <= 0) e = lines.get(0).length();
 
-        String word = "";
-        for (int i = 1; i < lines.get(0).length(); i++) {
-            if (lines.get(0).charAt(i) == ' ')
-                break;
-            word += lines.get(0).charAt(i);
-        }
+        String word = lines.get(0).substring(1, e);
 
         return new Word(word, String.join("\n", lines));
+    }
+
+    public static List<Word> getWordFromFile(File file) throws IOException {
+        List<Word> result = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
+
+//        System.out.println(Files.readAllLines(Path.of(file.getPath()), Charsets.UTF_8).size());
+
+        for (String dirty_line : Files.readAllLines(Path.of(file.getPath()), Charsets.UTF_8)) {
+            String line = dirty_line.replaceAll("[\uFEFF-\uFFFF]", "").strip().trim();
+
+            if (line.isBlank() || line.charAt(0) == '@') {
+                Word w = getWordFromLines(lines);
+                if (w != null) {
+                    result.add(w);
+                }
+                lines.clear();
+            }
+            if (!line.isBlank()) {
+                lines.add(line);
+            }
+        }
+
+        if (!lines.isEmpty()) {
+            Word w = getWordFromLines(lines);
+            if (w != null) {
+                result.add(w);
+            }
+            lines.clear();
+        }
+
+
+//        System.out.println(result.get(0).getWord());
+//        System.out.println(result.get(0).getDefinition());
+        return result;
     }
 
     public static void showWord(String word) {
@@ -71,15 +101,19 @@ public class Helper {
         System.out.println("\t\tex. " + example + " : " + meaning);
     }
 
+    public static void showPhrase(String phrase) {
+        System.out.println("phrase: " + phrase);
+    }
+
     public static void showWordDefinition(Word Eword) {
         String word = Eword.getWord(), definition = Eword.getDefinition();
 
         List<String> lines = new ArrayList<>(List.of(definition.split("\n")));
 
-        System.out.println(definition);
+//        System.out.println(definition);
         showWord(word);
 
-        for (int i = 0, count_meaning = 0; i < lines.size(); i++) {
+        for (int i = 0, countMeaning = 0; i < lines.size(); i++) {
             String line = lines.get(i);
 
             switch (line.charAt(0)) {
@@ -89,12 +123,18 @@ public class Helper {
                         showPronunciation(line.substring(line.indexOf('/')));
                     }
                     break;
+                case '!':
+                    showPhrase(line.substring(1).strip());
+                    break;
                 case '*': // type
-                    count_meaning = 0; // number of meaning in same type
+                    countMeaning = 0; // number of meaning in same type
                     showType(line.substring(1).strip());
                     break;
                 case '-': // meaning
-                    showMeaning(line.substring(1).strip(), ++ count_meaning);
+                    if (line.charAt(1) == ' ') {
+                        showMeaning(line.substring(1).strip(), ++ countMeaning);
+                    }
+                    // else malformed input
                     break;
                 case '=': // example
                     int separator = line.indexOf('+');
@@ -103,30 +143,11 @@ public class Helper {
                     showExample(example, meaning);
                     break;
                 default:
-                    System.out.println(line);
-                    throw new RuntimeException("can't read word definition, wrong format!");
+//                    malformed input
+//                    System.out.println(line);
+//                    throw new RuntimeException("can't read word definition, wrong format!");
             }
         }
-    }
-
-    public static List<Word> getWordFromFile(File file) throws IOException {
-        List<Word> result = new ArrayList<>();
-        List<String> lines = new ArrayList<>();
-
-        for (String line : Files.readAllLines(Path.of(file.getPath()), Charsets.UTF_8)) {
-            lines.add(line);
-            if (line.isEmpty()) {
-                Word w = getWordFromLines(lines);
-                if (w != null) {
-                    result.add(w);
-                }
-                lines.clear();
-            }
-        }
-
-//        System.out.println(result.get(0).getWord());
-//        System.out.println(result.get(0).getDefinition());
-        return result;
     }
 
     public static ArrayList<String> getRecentWord(File file) {
