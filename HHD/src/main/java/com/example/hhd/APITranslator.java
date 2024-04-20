@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 public class APITranslator {
 
     public static void main(String[] args) throws IOException {
-        String text = "dskodaa";
+        String text = "System";
         //Translated text: Hallo Welt!
         try {
             System.out.println("Translated text: " + translate("en", "vi", text));
