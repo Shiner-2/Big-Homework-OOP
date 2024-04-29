@@ -22,7 +22,6 @@ public class TrieDictionary extends Dictionary {
         for (Word w : Helper.getWordFromFile(file)) {
             insert(w);
         }
-
     }
 
     @Override
