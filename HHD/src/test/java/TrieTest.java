@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class TrieTest {
 
     public static void main(String[] args) throws IOException {
-        File file = new File("src/main/resources/data/anhviet109K.txt");
-        Dictionary res = new TrieDictionary(file);
+        //File file = new File("src/main/resources/data/anhviet109K.txt");
+        Dictionary res = new TrieDictionary();
 //
 //        System.out.println(file.exists());
 

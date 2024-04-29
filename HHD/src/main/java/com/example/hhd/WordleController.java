@@ -19,7 +19,7 @@ public class WordleController implements Initializable {
     private TextField WordleInput;
     private Integer sz = 5;
     private String HiddenWord = "DOGGY";
-    private TrieDictionary trie = new TrieDictionary();
+    //private TrieDictionary trie = new TrieDictionary();
     private Integer GuessCount = 0;
 
     public void onWordleBtnSubmit() {
@@ -33,18 +33,18 @@ public class WordleController implements Initializable {
             a.show();
         } else{
             //TODO: Contains làm ntn ???
-            if(!trie.contains(in)) {
-                WordleWordController lt = new WordleWordController(getSz());
-                lt.setWord(in, HiddenWord);
-                WordleContainer.getChildren().add(lt);
-                GuessCount++;
-            } else{
-                Alert a = new Alert(Alert.AlertType.ERROR);
-                a.setTitle("Error");
-                a.setHeaderText("Invalid Word");
-                a.setContentText("Please enter an English word");
-                a.show();
-            }
+//            if(!trie.contains(in)) {
+//                WordleWordController lt = new WordleWordController(getSz());
+//                lt.setWord(in, HiddenWord);
+//                WordleContainer.getChildren().add(lt);
+//                GuessCount++;
+//            } else{
+//                Alert a = new Alert(Alert.AlertType.ERROR);
+//                a.setTitle("Error");
+//                a.setHeaderText("Invalid Word");
+//                a.setContentText("Please enter an English word");
+//                a.show();
+//            }
         }
 
         if(GuessCount >= 5) {

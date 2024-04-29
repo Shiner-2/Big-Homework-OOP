@@ -13,7 +13,7 @@ public class WordleWordController extends VBox {
     @FXML
     private HBox WordleWordContainer;
     private Integer sz = 5;
-    private TrieDictionary trie = new TrieDictionary();
+    //private TrieDictionary trie = new TrieDictionary();
 
     public WordleWordController(Integer sz) {
         this.sz = sz;

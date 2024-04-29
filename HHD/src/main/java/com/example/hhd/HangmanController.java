@@ -177,6 +177,7 @@ public class HangmanController implements Initializable {
                 }
             }
         }
+        if(correctcnt >= hiddencnt) return;
         int i = 0;
         for(Node node: HangmanHiddenWordContainer.getChildren()) {
             if(node instanceof HangmanHiddenLetterController) {
