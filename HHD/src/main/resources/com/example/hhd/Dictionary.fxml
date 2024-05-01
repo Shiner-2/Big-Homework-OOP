@@ -15,7 +15,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" />
+      <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" onMouseClicked="#handleMouseClick"/>
       <Button layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#LoadApp" prefHeight="50.0" prefWidth="100.0" text="Main menu" />
       <Button layoutX="400.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
       <Button layoutX="520.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
@@ -27,7 +27,7 @@
       <Button layoutX="771.0" layoutY="371.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
       <ScrollPane layoutX="280.0" layoutY="80.0" prefHeight="454.0" prefWidth="458.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="458.0" />
+          <AnchorPane fx:id="showWordPane" minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="458.0" />
         </content>
       </ScrollPane>
    </children>

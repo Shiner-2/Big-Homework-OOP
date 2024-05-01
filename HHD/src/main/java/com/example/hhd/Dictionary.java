@@ -9,31 +9,7 @@ public abstract class Dictionary {
         if (Helper.get_extension(file).equals("txt")) {
             return new TrieDictionary(file);
         }
-        if (Helper.get_extension(file).equals(".sql")) {
-            return new DatabaseDictionary(file);
-        }
-        assert(false);
-        return new Dictionary() { // empty
-            @Override
-            public void insert(Word word) {
-
-            }
-
-            @Override
-            public boolean delete(Word word) {
-                return false;
-            }
-
-            @Override
-            public ArrayList<Word> search(String target) {
-                return null;
-            }
-
-            @Override
-            public boolean contains(String word_target) {
-                return false;
-            }
-        };
+        throw new RuntimeException("can't read file");
     }
 
     public abstract void insert(Word word);
@@ -43,4 +19,6 @@ public abstract class Dictionary {
     public abstract ArrayList<Word> search(String target);
 
     public abstract boolean contains(String word_target);
+
+    public abstract ArrayList<Word> allWordList();
 }
