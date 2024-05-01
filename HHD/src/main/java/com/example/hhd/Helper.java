@@ -37,7 +37,7 @@ public class Helper {
         if (lines.isEmpty() || String.join("", lines).isBlank()) {
             return null;
         }
-        System.out.println("FUCK OFF:" + String.join("\n",  lines));
+
         int e = lines.get(0).indexOf('/') - 1;
         if (e <= 0) e = lines.get(0).length();
 
@@ -75,79 +75,7 @@ public class Helper {
             lines.clear();
         }
 
-
-//        System.out.println(result.get(0).getWord());
-//        System.out.println(result.get(0).getDefinition());
         return result;
-    }
-
-    public static void showWord(String word) {
-        System.out.println(word); // bold + header font
-    }
-
-    public static void showPronunciation(String pronunciation) {
-        System.out.println(pronunciation); // sound button
-    }
-
-    public static void showType(String type) {
-        System.out.println(type); // italic type
-    }
-
-    public static void showMeaning(String meaning, int index) {
-        System.out.println("\t" + index + ". " + meaning);
-    }
-
-    public static void showExample(String example, String meaning) {
-        System.out.println("\t\tex. " + example + " : " + meaning);
-    }
-
-    public static void showPhrase(String phrase) {
-        System.out.println("phrase: " + phrase);
-    }
-
-    public static void showWordDefinition(Word Eword) {
-        String word = Eword.getWord(), definition = Eword.getDefinition();
-
-        List<String> lines = new ArrayList<>(List.of(definition.split("\n")));
-
-//        System.out.println(definition);
-        showWord(word);
-
-        for (int i = 0, countMeaning = 0; i < lines.size(); i++) {
-            String line = lines.get(i);
-
-            switch (line.charAt(0)) {
-                case '@': // word
-                    if (line.charAt(line.length() - 1) == '/') {
-                        // pronunciation
-                        showPronunciation(line.substring(line.indexOf('/')));
-                    }
-                    break;
-                case '!':
-                    showPhrase(line.substring(1).strip());
-                    break;
-                case '*': // type
-                    countMeaning = 0; // number of meaning in same type
-                    showType(line.substring(1).strip());
-                    break;
-                case '-': // meaning
-                    if (line.charAt(1) == ' ') {
-                        showMeaning(line.substring(1).strip(), ++ countMeaning);
-                    }
-                    // else malformed input
-                    break;
-                case '=': // example
-                    int separator = line.indexOf('+');
-                    String example = line.substring(1, separator - 1);
-                    String meaning = line.substring(separator + 1);
-                    showExample(example, meaning);
-                    break;
-                default:
-//                    malformed input
-//                    System.out.println(line);
-//                    throw new RuntimeException("can't read word definition, wrong format!");
-            }
-        }
     }
 
     public static ArrayList<String> getRecentWord(File file) {
