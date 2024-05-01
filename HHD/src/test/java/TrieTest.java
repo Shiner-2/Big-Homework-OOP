@@ -31,6 +31,5 @@ public class TrieTest {
 
 //        System.out.println(res.contains("a la carte"));
 //        System.out.println(res.search("1 to 1 relationship").get(0).getDefinition());
-
     }
 }

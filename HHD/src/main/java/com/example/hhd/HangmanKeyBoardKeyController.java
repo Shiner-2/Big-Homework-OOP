@@ -7,24 +7,31 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class WordleLetterController extends VBox {
+public class HangmanKeyBoardKeyController extends VBox {
     @FXML
-    private Label WordleLetter;
-
-    public WordleLetterController() {
+    private Label HangmanKeyBoardKeykey;
+    public HangmanKeyBoardKeyController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "Wordle-letter.fxml"));
+                "HangmanKeyBoardKey.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.setStyle("-fx-background-color: cyan;");
     }
 
-    public void setLetter(String s) {
-        WordleLetter.setText(s);
+    public void Correct() {
+        this.setStyle("-fx-background-color: green;");
+    }
+
+    public void Wrong() {
+        this.setStyle("-fx-background-color: red;");
+    }
+
+    public void setKey(String s) {
+        HangmanKeyBoardKeykey.setText(s);
     }
 }
