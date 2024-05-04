@@ -1,9 +1,12 @@
 package com.example.hhd;
 
 import com.almasb.fxgl.core.util.LazyValue;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +55,15 @@ public class HangmanController implements Initializable {
 
     private String HiddenWord = "Connection";
     private List<String> IdList = new ArrayList<>();
+
+    public void LoadGames(Event event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Games");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

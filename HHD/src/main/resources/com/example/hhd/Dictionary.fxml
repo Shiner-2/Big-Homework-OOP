@@ -5,7 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,22 +18,34 @@
          </font>
       </TextField>
       <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" />
-      <Button layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#LoadApp" prefHeight="50.0" prefWidth="100.0" text="Main menu" />
-      <Button layoutX="400.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
-      <Button layoutX="520.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
-      <Button layoutX="640.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Button" />
-      <ToggleButton layoutX="771.0" layoutY="16.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="ToggleButton" />
-      <Button layoutX="771.0" layoutY="80.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
-      <Button layoutX="771.0" layoutY="130.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
-      <Button layoutX="771.0" layoutY="180.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
-      <Button layoutX="771.0" layoutY="371.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#LoadApp" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" text="Main menu" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <ScrollPane layoutX="280.0" layoutY="80.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="450.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="650.0">
                <children>
-                  <Label fx:id="definition" alignment="TOP_LEFT" layoutX="6.0" prefHeight="450.0" prefWidth="450.0" text="Label" />
+                  <Label fx:id="definition" alignment="TOP_LEFT" prefHeight="450.0" prefWidth="650.0" />
                </children></AnchorPane>
         </content>
       </ScrollPane>
+      <Button fx:id="SpeakBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#speak" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0">
+               <image>
+                  <Image url="@../../../img/volume-high-solid.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="39.0" fitWidth="250.0" layoutX="682.0" layoutY="22.0">
+         <image>
+            <Image url="@../../../img/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
