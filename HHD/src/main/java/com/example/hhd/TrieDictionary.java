@@ -44,4 +44,10 @@ public class TrieDictionary extends Dictionary {
     public boolean contains(String s) {
         return trie.find_word(s);
     }
+
+    @Override
+    public Word randomWord() {
+        ArrayList<Word> allWord = allWordList();
+
+    }
 }

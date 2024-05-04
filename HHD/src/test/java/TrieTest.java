@@ -16,21 +16,17 @@ public class TrieTest {
 //        System.out.println(file.exists());
 
 
-        ArrayList<Word> wwww = res.search("price-list");
+        ArrayList<Word> words = res.search("price-list");
 
-        for (Word w : wwww) {
+        for (Word w : words) {
             System.out.println(w.getDefinition());
-            Helper.showWordDefinition(w);
         }
-//        Word w = wwww.get(0);
-//
-//        Helper.showWordDefinition(w);
-
-//        System.out.println(w.getWord());
-//        System.out.println(w.getDefinition());
+        Word w = words.get(0);
+        System.out.println(w.getWord());
+        System.out.println(w.getDefinition());
 
 //        System.out.println(res.contains("a la carte"));
-//        System.out.println(res.search("1 to 1 relationship").get(0).getDefinition());
+//        System.out.println(res.seamrch("1 to 1 relationship").get(0).getDefinition());
 
     }
 }
