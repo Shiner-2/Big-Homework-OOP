@@ -1,6 +1,7 @@
 package com.example.hhd;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,11 +55,11 @@ public class ScrabbleController {
         System.out.println(sc.getRandomTile());
     }
 
-    public void LoadApp(ActionEvent event) throws IOException {
+    public void LoadGames(Event event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("App.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Games.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("HHD");
+        stage.setTitle("Games");
         stage.setScene(scene);
         stage.show();
     }

@@ -2,11 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.ScrabbleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.ScrabbleController">
    <children>
       <HBox layoutX="190.0" layoutY="526.0" prefHeight="60.0" prefWidth="400.0">
          <children>
@@ -48,6 +49,10 @@
          </children>
       </HBox>
       <Button fx:id="btnstart" layoutX="302.0" layoutY="94.0" mnemonicParsing="false" onAction="#startGame" prefHeight="105.0" prefWidth="196.0" text="Button" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#LoadApp" text="Button" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="14.0" onMouseClicked="#LoadGames">
+         <image>
+            <Image url="@../../../img/images-removebg-preview-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
