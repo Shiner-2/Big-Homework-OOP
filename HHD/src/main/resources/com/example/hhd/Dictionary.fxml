@@ -10,42 +10,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.text.TextFlow?>
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.DictionaryController">
-   <children>
-      <TextField fx:id="userInputWord" layoutX="15.0" layoutY="16.0" onKeyPressed="#onUserTyping" prefHeight="50.0" prefWidth="250.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </TextField>
-      <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#LoadApp" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" text="Main menu" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <ScrollPane layoutX="280.0" layoutY="80.0">
+    <children>
+        <TextField fx:id="userInputWord" layoutX="15.0" layoutY="16.0" onKeyPressed="#onUserTyping" prefHeight="50.0" prefWidth="250.0">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <ListView fx:id="recommendWord" layoutX="14.0" layoutY="80.0" prefHeight="454.0" prefWidth="250.0" />
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#LoadApp" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" text="Main menu" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font></Button>
+        <ScrollPane layoutX="280.0" layoutY="80.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="650.0">
-               <children>
-                  <Label fx:id="definition" alignment="TOP_LEFT" prefHeight="450.0" prefWidth="650.0" />
-               </children></AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="650.0">
+                <children>
+                    <TextFlow fx:id="wordDefinition" />
+<!--                    <Label fx:id="definition" alignment="TOP_LEFT" prefHeight="450.0" prefWidth="650.0" />-->
+                </children>
+            </AnchorPane>
         </content>
-      </ScrollPane>
-      <Button fx:id="SpeakBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#speak" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../../../img/volume-high-solid.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="39.0" fitWidth="250.0" layoutX="682.0" layoutY="22.0">
-         <image>
-            <Image url="@../../../img/logo.png" />
-         </image>
-      </ImageView>
-   </children>
+        </ScrollPane>
+        <Button fx:id="SpeakBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="16.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#speak" prefHeight="50.0" prefWidth="115.0" style="-fx-background-color: #3766a1; -fx-background-radius: 10;" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="30.0">
+                    <image>
+                        <Image url="@../../../img/volume-high-solid.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <ImageView fitHeight="39.0" fitWidth="250.0" layoutX="682.0" layoutY="22.0">
+            <image>
+                <Image url="@../../../img/logo.png" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>

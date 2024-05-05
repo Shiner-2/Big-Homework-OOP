@@ -1,8 +1,6 @@
 package com.example.hhd;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.io.File;
 
@@ -37,9 +35,12 @@ public class TrieDictionary extends Dictionary {
 
     @Override
     public ArrayList<Word> search(String target) {
-        return trie.search_word(target, 10);
+        return trie.search_word(target, 20);
     }
 
+    public ArrayList<Word> allWordList() {
+        return trie.search_all_word("");
+    }
     @Override
     public boolean contains(String s) {
         return trie.find_word(s);
