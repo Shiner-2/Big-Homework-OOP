@@ -3,10 +3,12 @@ package com.example.hhd;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Random;
 
 public class TrieDictionary extends Dictionary {
 
     private final Trie trie = new Trie();
+    private Random rand = new Random();
 
     public TrieDictionary() {
 
@@ -48,6 +50,28 @@ public class TrieDictionary extends Dictionary {
     @Override
     public Word randomWord() {
         ArrayList<Word> allWord = allWordList();
+        ArrayList<Word> words = new ArrayList<>();
 
+        for (Word w : allWord) {
+            if (w.getWord().chars().allMatch(Character::isLetter)) {
+                words.add(w);
+            }
+        }
+
+        return words.get(rand.nextInt(words.size()));
+    }
+
+    @Override
+    public Word randomWord(int length) {
+        ArrayList<Word> allWord = allWordList();
+        ArrayList<Word> words = new ArrayList<>();
+
+        for (Word w : allWord) {
+            if (w.getWord().chars().allMatch(Character::isLetter) && w.getWord().length() == length) {
+                words.add(w);
+            }
+        }
+
+        return words.get(rand.nextInt(words.size()));
     }
 }

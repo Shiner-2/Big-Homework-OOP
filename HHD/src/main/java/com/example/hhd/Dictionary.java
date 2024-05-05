@@ -23,4 +23,6 @@ public abstract class Dictionary {
     public abstract ArrayList<Word> allWordList();
 
     public abstract Word randomWord();
+
+    public abstract Word randomWord(int length);
 }
