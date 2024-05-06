@@ -10,8 +10,9 @@ public class TrieDictionary extends Dictionary {
     private final Trie trie = new Trie();
     private Random rand = new Random();
 
-    public TrieDictionary() {
-
+    public TrieDictionary() throws IOException {
+        File file = new File("src/main/resources/data/anhviet109K.txt");
+        import_from_file(file);
     }
 
     public TrieDictionary(File file) throws IOException {

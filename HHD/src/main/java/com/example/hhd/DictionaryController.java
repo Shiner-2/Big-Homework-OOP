@@ -1,6 +1,7 @@
 package com.example.hhd;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -19,29 +18,27 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
 
-    Dictionary trie;
-
+    Dictionary data;
     @FXML
     private TextField userInputWord;
-
     @FXML
     private ListView<Word> recommendWord;
 
     @FXML
-    private AnchorPane showWordPane;
+    private TextFlow wordDefinition;
 
-    private TextFlow wordDefinition = new TextFlow();
+    private Word currentWord;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            trie = new TrieDictionary(new File("src/main/resources/data/anhviet109K.txt"));
+            data = new TrieDictionary(new File("src/main/resources/data/anhviet109K.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,16 +47,11 @@ public class DictionaryController implements Initializable {
     @FXML
     private void onUserTyping(){
         String inputText = userInputWord.getText();
-        StringBuilder queryText = new StringBuilder();
-        for(int i = 0; i < inputText.length(); i++) {
-            if(inputText.charAt(i)!=' '){
-                queryText.append(inputText.charAt(i));
-            }
-        }
-        // TODO: pass queryText into some search function
+        inputText = inputText.toLowerCase(Locale.ROOT);
+
         recommendWord.getItems().clear();
-        recommendWord.getItems().addAll(searchWords(queryText.toString()));
-        recommendWord.setCellFactory(param -> new ListCell<Word>() {
+        recommendWord.getItems().addAll(data.search(inputText));
+        recommendWord.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Word item, boolean empty) {
                 super.updateItem(item, empty);
@@ -71,63 +63,30 @@ public class DictionaryController implements Initializable {
                 }
             }
         });
+        recommendWord.setOnMouseClicked(mouseEvent -> {
+            currentWord = recommendWord.getSelectionModel().getSelectedItem();
+            wordDefinition.getChildren().clear();
+            showWordDefinition(currentWord);
+        });
     }
 
-    // TODO: replace words as a Initialize List from Data
-    ArrayList<String> words = new ArrayList<>(
-            Arrays.asList("test", "dog","Human", "lmao", "Fucked",
-                    "Friends", "Animal", "Human", "Humans", "Bear", "Life",
-                    "KYS", "Words", "222", "Bird", "Dog", "Shitt",
-                    "Subscribe!", "SoftwareEngineeringStudent", "Asssssss",
-                    "Keenie", "Super", "Like")
-    );
-
-    //TODO: replace searchWords function to find word more efficient
-    private ArrayList<Word> searchWords(String inputText){
-//        ArrayList<String> ans = new ArrayList<>();
-//        for (String s: words){
-//            if(s.contains(inputText)){
-//                ans.add(s);
-//            }
-//        }
-
-//        ArrayList<Word> word = trie.search(inputText);
-//
-//        ArrayList<String> ans = new ArrayList<>();
-//        for (Word w : word) {
-//            ans.add(w.getWord());
-//        }
-//
-//        return ans;
-
-        return trie.search(inputText);
-    }
-
-    private Stage stage;
     public void LoadApp(ActionEvent event) throws IOException {
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Dictionary.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        scene.getStylesheets().add(this.getClass().getResource("/styles.css").toExternalForm());
 
         stage.setTitle("HHD");
         stage.setScene(scene);
         stage.show();
     }
 
-    public void handleMouseClick(MouseEvent mouseEvent) throws IOException {
-        System.out.println(recommendWord.getSelectionModel().getSelectedItem());
-
-        Word currentWord = recommendWord.getSelectionModel().getSelectedItem();
-        showWordPane.getChildren().clear();
-        wordDefinition.getChildren().clear();
-        showWordDefinition(currentWord);
-        showWordPane.getChildren().add(wordDefinition);
+    public void speak(Event event) {
+        TTS tts = new TTS();
+        tts.speak(currentWord.getWord());
     }
 
-    public void showWord(String word) {
+    private void showWord(String word) {
         System.out.println(word); // bold + header font
 
         Text tx = new Text(word + "\n");
@@ -135,7 +94,7 @@ public class DictionaryController implements Initializable {
         wordDefinition.getChildren().add(tx);
     }
 
-    public void showPronunciation(String pronunciation) {
+    private void showPronunciation(String pronunciation) {
         System.out.println(pronunciation); // sound button
 
         Text tx = new Text(pronunciation + "\n");
@@ -144,7 +103,7 @@ public class DictionaryController implements Initializable {
 
     }
 
-    public void showType(String type) {
+    private void showType(String type) {
         System.out.println(type); // italic type
 
         Text tx = new Text(type + "\n");
@@ -152,7 +111,7 @@ public class DictionaryController implements Initializable {
         wordDefinition.getChildren().add(tx);
     }
 
-    public void showMeaning(String meaning, int index) {
+    private void showMeaning(String meaning, int index) {
         System.out.println("\t" + index + ". " + meaning);
 
         Text tx = new Text("\t" + index + ". " + meaning + "\n");
@@ -160,7 +119,7 @@ public class DictionaryController implements Initializable {
         wordDefinition.getChildren().add(tx);
     }
 
-    public void showExample(String example, String meaning) {
+    private void showExample(String example, String meaning) {
         System.out.println("\t\tex. " + example + " : " + meaning);
 
         Text tx = new Text("\t\tex. " + example + " : " + meaning + "\n");
@@ -168,7 +127,7 @@ public class DictionaryController implements Initializable {
         wordDefinition.getChildren().add(tx);
     }
 
-    public void showPhrase(String phrase) {
+    private void showPhrase(String phrase) {
         System.out.println("phrase: " + phrase);
 
         Text tx = new Text("phrase: " + phrase + "\n");
@@ -176,13 +135,12 @@ public class DictionaryController implements Initializable {
         wordDefinition.getChildren().add(tx);
     }
 
-    public void showWordDefinition(Word Eword) {
+    private void showWordDefinition(Word Eword) {
         if (Eword == null) return ;
         String word = Eword.getWord(), definition = Eword.getDefinition();
 
         List<String> lines = new ArrayList<>(List.of(definition.split("\n")));
 
-//        System.out.println(definition);
         showWord(word);
 
         for (int i = 0, countMeaning = 0; i < lines.size(); i++) {
@@ -217,7 +175,6 @@ public class DictionaryController implements Initializable {
                     break;
                 default:
 //                    malformed input
-//                    System.out.println(line);
 //                    throw new RuntimeException("can't read word definition, wrong format!");
             }
         }

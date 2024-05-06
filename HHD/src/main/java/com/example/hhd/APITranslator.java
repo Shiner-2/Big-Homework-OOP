@@ -25,7 +25,7 @@ public class APITranslator {
         }
     }
 
-    private static String translate(String langFrom, String langTo, String text) throws IOException {
+    public static String translate(String langFrom, String langTo, String text) throws IOException {
         // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbzhfVzJpR_QDIBAtpiHD8zcvCpt01TNhUcnkQS_yQTzVDPz97933inwllY96R79JW13/exec" +
                 "?q=" + URLEncoder.encode(text, StandardCharsets.UTF_8) +

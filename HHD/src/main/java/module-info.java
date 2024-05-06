@@ -9,4 +9,5 @@ module com.example.hhd {
     opens com.example.hhd to javafx.fxml;
     exports com.example.hhd;
     requires javafx.web;
+    requires jsapi;
 }
