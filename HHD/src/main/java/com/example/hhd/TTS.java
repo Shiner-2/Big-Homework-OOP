@@ -14,10 +14,11 @@ public class TTS {
     }
 
     public void speak(String text) {
+        System.out.println("Try speak " + text);
         //System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         try {
             SynthesizerModeDesc desc = new SynthesizerModeDesc(
-                    null,          // engine name
+                    "FUCK YOU",          // engine name
                     "general",     // mode name
                     Locale.US,     // locale
                     null,          // running
@@ -42,7 +43,7 @@ public class TTS {
             }
             synthesizer.getSynthesizerProperties().setVoice(voice);
 
-            /* The the synthesizer to speak and wait for it to
+            /* The synthesizer to speak and wait for it to
              * complete.
              */
             synthesizer.speakPlainText(text, null);
