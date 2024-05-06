@@ -21,4 +21,8 @@ public abstract class Dictionary {
     public abstract boolean contains(String word_target);
 
     public abstract ArrayList<Word> allWordList();
+
+    public abstract Word randomWord();
+
+    public abstract Word randomWord(int length);
 }
