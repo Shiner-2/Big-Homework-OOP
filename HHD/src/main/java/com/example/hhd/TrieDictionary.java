@@ -3,6 +3,7 @@ package com.example.hhd;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Locale;
 import java.util.Random;
 
 public class TrieDictionary extends Dictionary {
@@ -45,7 +46,7 @@ public class TrieDictionary extends Dictionary {
     }
     @Override
     public boolean contains(String s) {
-        return trie.find_word(s);
+        return trie.find_word(s.toLowerCase(Locale.ROOT));
     }
 
     @Override
