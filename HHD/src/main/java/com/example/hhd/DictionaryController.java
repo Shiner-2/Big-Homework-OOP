@@ -82,8 +82,7 @@ public class DictionaryController implements Initializable {
     }
 
     public void speak(Event event) {
-        TTS tts = new TTS();
-        tts.speak(currentWord.getWord());
+        TTS.playSoundGoogleTranslateEnToVi(currentWord.getWord());
     }
 
     private void showWord(String word) {
