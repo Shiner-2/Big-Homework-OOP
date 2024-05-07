@@ -8,4 +8,10 @@ module com.example.hhd {
 
     opens com.example.hhd to javafx.fxml;
     exports com.example.hhd;
+<<<<<<< Updated upstream
+=======
+    requires javafx.web;
+    requires jsapi;
+    requires jlayer;
+>>>>>>> Stashed changes
 }
