@@ -18,9 +18,9 @@ public class QuizGameController implements Initializable {
     QuizGame gameData;
 
     @FXML
-    Label question;
+    private Label question;
     @FXML
-    Button choiceA, choiceB, choiceC, choiceD;
+    private Button choiceA, choiceB, choiceC, choiceD;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,6 +29,7 @@ public class QuizGameController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        setQuestion();
     }
 
     private int questionCounter = 0;
@@ -36,24 +37,16 @@ public class QuizGameController implements Initializable {
     private static int questionMax = 10;
     Question currentQuestion;
     public void setQuestion() {
+        ++ questionCounter;
         Question q = gameData.getQuestion();
         currentQuestion = q;
         question.setText(q.getQuestion());
+        question.setWrapText(true);
         String[] choices = q.getChoices();
         choiceA.setText(choices[0]);
         choiceB.setText(choices[1]);
         choiceC.setText(choices[2]);
         choiceD.setText(choices[3]);
-    }
-
-    @FXML
-    public void choiceAClicked(ActionEvent event) {
-        if (choiceA.getText().equals(currentQuestion.getAnswer())) {
-            System.out.println("Correct answer");
-            score ++;
-        } else {
-            System.out.println("Wrong answer");
-        }
     }
 
     @FXML
@@ -64,6 +57,7 @@ public class QuizGameController implements Initializable {
         } else {
             System.out.println("Wrong answer");
         }
+        setQuestion();
     }
 
     @FXML
@@ -74,6 +68,7 @@ public class QuizGameController implements Initializable {
         } else {
             System.out.println("Wrong answer");
         }
+        setQuestion();
     }
 
     @FXML
@@ -84,6 +79,7 @@ public class QuizGameController implements Initializable {
         } else {
             System.out.println("Wrong answer");
         }
+        setQuestion();
     }
 
     @FXML
@@ -94,5 +90,6 @@ public class QuizGameController implements Initializable {
         } else {
             System.out.println("Wrong answer");
         }
+        setQuestion();
     }
 }

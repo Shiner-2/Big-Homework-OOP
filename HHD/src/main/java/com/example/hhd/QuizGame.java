@@ -44,9 +44,4 @@ public class QuizGame {
     public Question getQuestion() {
         return questions.get(rand.nextInt(questions.size()));
     }
-
-    public static void main(String[] args) throws IOException {
-        QuizGame g = new QuizGame();
-//        readFile(new File("src/main/resources/data/question.csv"));
-    }
 }
