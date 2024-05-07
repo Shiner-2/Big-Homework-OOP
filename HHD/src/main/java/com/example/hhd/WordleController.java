@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WordleController implements Initializable {
+public class WordleController{
     @FXML
     private Button btn;
     @FXML
@@ -27,6 +27,11 @@ public class WordleController implements Initializable {
     private String HiddenWord = "DOGGY";
     //private TrieDictionary trie = new TrieDictionary();
     private Integer GuessCount = 0;
+    private Dictionary data = new TrieDictionary();
+
+    public WordleController() throws IOException {
+        HiddenWord = data.randomWord(5).getWord().toLowerCase();
+    }
 
     public void LoadGames(Event event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -39,7 +44,7 @@ public class WordleController implements Initializable {
 
     public void onWordleBtnSubmit() {
         String in = WordleInput.getText();
-        in = in.toUpperCase();
+        //in = in.toUpperCase();
         if(in.length() != sz) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Error");
@@ -47,19 +52,18 @@ public class WordleController implements Initializable {
             a.setContentText("Please enter " + sz.toString() + " letters!");
             a.show();
         } else{
-            //TODO: Contains làm ntn ???
-//            if(!trie.contains(in)) {
-//                WordleWordController lt = new WordleWordController(getSz());
-//                lt.setWord(in, HiddenWord);
-//                WordleContainer.getChildren().add(lt);
-//                GuessCount++;
-//            } else{
-//                Alert a = new Alert(Alert.AlertType.ERROR);
-//                a.setTitle("Error");
-//                a.setHeaderText("Invalid Word");
-//                a.setContentText("Please enter an English word");
-//                a.show();
-//            }
+            if(data.contains(in)) {
+                WordleWordController lt = new WordleWordController(getSz());
+                lt.setWord(in, HiddenWord);
+                WordleContainer.getChildren().add(lt);
+                GuessCount++;
+            } else{
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setTitle("Error");
+                a.setHeaderText("Invalid Word");
+                a.setContentText("Please enter an English word");
+                a.show();
+            }
         }
 
         if(GuessCount >= 5) {
@@ -68,7 +72,7 @@ public class WordleController implements Initializable {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setTitle("You lose");
             a.setHeaderText("Noob");
-            a.setContentText("Better luck next time");
+            a.setContentText(HiddenWord);
             a.show();
         }
     }
@@ -81,8 +85,4 @@ public class WordleController implements Initializable {
         return sz;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }
