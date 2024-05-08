@@ -7,26 +7,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DictionaryController implements Initializable {
 
+    @FXML
+    private Button AddWordBtn;
+
     Dictionary data;
+
     @FXML
     private TextField userInputWord;
+
     @FXML
     private ListView<Word> recommendWord;
 
@@ -67,6 +69,15 @@ public class DictionaryController implements Initializable {
             currentWord = recommendWord.getSelectionModel().getSelectedItem();
             wordDefinition.getChildren().clear();
             showWordDefinition(currentWord);
+            try {
+                FileWriter myWriter = new FileWriter("src/main/resources/data/temp.txt");
+                myWriter.write(currentWord.getWord());
+                myWriter.close();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 
@@ -178,4 +189,46 @@ public class DictionaryController implements Initializable {
             }
         }
     }
+
+    @FXML
+    public void onAddWord(Event event) throws IOException {
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Add word");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddWordView.fxml"));
+        newWindow.setScene(new Scene(loader.load()));
+        newWindow.show();
+    }
+
+    @FXML
+    public void onDeleteWord(Event event) {
+        if(currentWord == null) {
+            return;
+        }
+        if(data.contains(currentWord.getWord())){
+            data.delete(currentWord);
+            wordDefinition.getChildren().clear();
+            recommendWord.getItems().clear();
+        }else{
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Error");
+            error.setContentText("This word is not in the dictionary");
+            error.show();
+        }
+    }
+
+    @FXML
+    public void onEditWord(Event event) throws IOException {
+        if(currentWord == null) {
+            return;
+        }
+        if(data.contains(currentWord.getWord())) {
+            Stage newWindow = new Stage();
+            newWindow.setTitle("Edit Word");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EditWordView.fxml"));
+            newWindow.setScene(new Scene(loader.load()));
+            newWindow.show();
+        }
+    }
+
+
 }
