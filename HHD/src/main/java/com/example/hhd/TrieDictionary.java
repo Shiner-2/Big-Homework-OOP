@@ -37,6 +37,7 @@ public class TrieDictionary extends Dictionary {
         for (Word w : words) {
             writer.write(w.getDefinition());
             writer.write('\n');
+            writer.write('\n');
         }
         writer.close();
     }
@@ -44,8 +45,12 @@ public class TrieDictionary extends Dictionary {
     @Override
     public void insert(Word word) {
         trie.insert_word(word);
+    }
+
+    @Override
+    public void insertAndSave(Word word) {
         try {
-            exportToFile(new File("src/main/resources/data/anhviet109K.txt"));
+            exportToFile(new File("src/main/resources/data/dictionary.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,9 +58,14 @@ public class TrieDictionary extends Dictionary {
 
     @Override
     public boolean delete(Word word) {
+        return trie.delete_word(word);
+    }
+
+    @Override
+    public boolean deleteAndSave(Word word) {
         boolean canDeleted = trie.delete_word(word);
         try {
-            exportToFile(new File("src/main/resources/data/anhviet109K.txt"));
+            exportToFile(new File("src/main/resources/data/dictionary.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
