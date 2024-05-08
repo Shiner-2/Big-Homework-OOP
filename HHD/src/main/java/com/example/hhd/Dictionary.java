@@ -16,6 +16,10 @@ public abstract class Dictionary {
 
     public abstract boolean delete(Word word);
 
+    public abstract void insertAndSave(Word word);
+
+    public abstract boolean deleteAndSave(Word word);
+
     public abstract ArrayList<Word> search(String target);
 
     public abstract boolean contains(String word_target);
