@@ -49,6 +49,7 @@ public class TrieDictionary extends Dictionary {
 
     @Override
     public void insertAndSave(Word word) {
+        trie.insert_word(word);
         try {
             exportToFile(new File("src/main/resources/data/dictionary.txt"));
         } catch (IOException e) {
