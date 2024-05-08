@@ -3,13 +3,14 @@ package com.example.hhd;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 import java.io.IOException;
 
-public class HangmanHiddenLetterController extends VBox {
+public class HangmanHiddenLetterController extends AnchorPane {
     @FXML
     private Label HangmanHiddenLetterLetter;
     @FXML

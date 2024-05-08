@@ -53,8 +53,14 @@ public class HangmanController implements Initializable {
     private Integer correctcnt = 0;
     private Integer hiddencnt = 1;
 
-    private String HiddenWord = "Connection";
+    private String HiddenWord = "NULL";
     private List<String> IdList = new ArrayList<>();
+    private Dictionary data = new TrieDictionary();
+
+    public HangmanController() throws IOException {
+        HiddenWord = data.randomWord(10).getWord();
+        HiddenWord = HiddenWord.toUpperCase();
+    }
 
     public void LoadGames(Event event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -75,7 +81,6 @@ public class HangmanController implements Initializable {
         HangmanFail5.setVisible(false);
         HangmanFail6.setVisible(false);
 
-        HiddenWord = HiddenWord.toUpperCase();
         for(int i = 0; i < HiddenWord.length(); i++) {
             String id = "HiddenWord" + (i+1);
             HangmanHiddenLetterController lt = new HangmanHiddenLetterController();
@@ -92,7 +97,6 @@ public class HangmanController implements Initializable {
                     hiddencnt++;
                 }
             }
-
         }
 
         for(int i = 0; i < 9; i++) {
