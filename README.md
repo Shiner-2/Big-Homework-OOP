@@ -35,10 +35,11 @@ Group HHD
 This application is designed to help learning English. It's written in Java using Javafx library. This application only have one type of dictionary: English-Vietnamese. Data are stored in anhviet109K.txt
 
 ## Installation
-1. Clone the project from the repository.
-2. Open the project in the IDE.
-3. Run the project.
-4. If you want to change the data, you can change the E_V.txt and V_E.txt files.
+1. Install JavaFx library and at least JDK21
+2. Clone the project from the repository.
+3. Open the project in the IDE.
+4. Run the project.
+5. If you want to change the data, you can change the dictionary.txt.
 
 ## Usage
 1. Choose Dictionary button to open Dictionary
