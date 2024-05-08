@@ -25,4 +25,8 @@ public abstract class Dictionary {
     public abstract Word randomWord();
 
     public abstract Word randomWord(int length);
+
+    public abstract void importFromFile(File f) throws IOException;
+
+    public abstract void exportToFile(File f) throws IOException;
 }
