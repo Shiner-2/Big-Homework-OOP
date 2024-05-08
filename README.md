@@ -1,4 +1,5 @@
 # HHD Dictionary an application to support learning English using Java
+![image](https://github.com/Shiner-2/Big-Homework-OOP/assets/97158120/de5e95b4-fb0b-4027-abf7-839ac93cbe52)
 
 ## Author
 Group HHD
