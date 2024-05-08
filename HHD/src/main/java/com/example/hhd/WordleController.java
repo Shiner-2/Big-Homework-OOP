@@ -66,7 +66,7 @@ public class WordleController{
             }
         }
 
-        if(GuessCount >= 5) {
+        if(GuessCount >= 6) {
             WordleInput.setDisable(true);
             btn.setDisable(true);
             Alert a = new Alert(Alert.AlertType.INFORMATION);
