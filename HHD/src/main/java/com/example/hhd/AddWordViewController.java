@@ -26,9 +26,17 @@ public class AddWordViewController {
         String word = UserWordEntered.getText();
         word = word.toLowerCase();
         String defination = UserDefinationEntered.getText();
+        if(defination==null){
+            defination = "";
+        }
+        if(word==null){
+            return;
+        }
         Word w = new Word(word,defination);
+        String tmp = "@"+w.getWord()+"\n"+w.getDefinition();
+        w.setDefinition(tmp);
         if(!data.contains(word)){
-            data.insert(w);
+            data.insertAndSave(w);
             Alert success = new Alert(Alert.AlertType.INFORMATION);
             success.setTitle("Success");
             success.setContentText("Word have been added");

@@ -40,7 +40,7 @@ public class DictionaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            data = new TrieDictionary(new File("src/main/resources/data/anhviet109K.txt"));
+            data = new TrieDictionary();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -197,6 +197,14 @@ public class DictionaryController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AddWordView.fxml"));
         newWindow.setScene(new Scene(loader.load()));
         newWindow.show();
+        newWindow.setOnCloseRequest(windowEvent -> {
+            System.out.println("close");
+            try {
+                data = new TrieDictionary();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @FXML
@@ -205,7 +213,7 @@ public class DictionaryController implements Initializable {
             return;
         }
         if(data.contains(currentWord.getWord())){
-            data.delete(currentWord);
+            data.deleteAndSave(currentWord);
             wordDefinition.getChildren().clear();
             recommendWord.getItems().clear();
         }else{
@@ -227,6 +235,16 @@ public class DictionaryController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EditWordView.fxml"));
             newWindow.setScene(new Scene(loader.load()));
             newWindow.show();
+            newWindow.setOnCloseRequest(windowEvent -> {
+                System.out.println("close");
+                try {
+                    data = new TrieDictionary();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            wordDefinition.getChildren().clear();
+            recommendWord.getItems().clear();
         }
     }
 

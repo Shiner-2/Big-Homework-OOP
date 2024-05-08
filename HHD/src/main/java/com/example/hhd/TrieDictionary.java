@@ -15,7 +15,7 @@ public class TrieDictionary extends Dictionary {
     private Random rand = new Random();
 
     public TrieDictionary() throws IOException {
-        File file = new File("src/main/resources/data/anhviet109K.txt");
+        File file = new File("src/main/resources/data/dictionary.txt");
         importFromFile(file);
     }
 

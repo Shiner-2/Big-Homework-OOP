@@ -4,6 +4,7 @@ package com.example.hhd;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
 import java.io.File;
@@ -48,11 +49,12 @@ public class EditWordViewController implements Initializable {
         Word nw = new Word("","");
         nw.setWord(UserWordEnteredEdit.getText());
         nw.setDefinition(UserDefinationEnteredEdit.getText());
-        System.out.println(data.contains(nw.getWord()));
-        data.delete(nw);
-        System.out.println(data.contains(nw.getWord()));
-        data.insert(nw);
-        System.out.println(data.contains(nw.getWord()));
+        data.deleteAndSave(nw);
+        data.insertAndSave(nw);
+        Alert success = new Alert(Alert.AlertType.INFORMATION);
+        success.setTitle("Success");
+        success.setContentText("Word have been edited");
+        success.show();
     }
 
     @Override
