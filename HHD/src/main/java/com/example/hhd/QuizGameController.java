@@ -47,11 +47,12 @@ public class QuizGameController implements Initializable {
         QuizNextBtn.setDisable(true);
         QuizNextBtn.setVisible(false);
         Point.setText(""+score*100);
+        initGame();
         setQuestion();
     }
 
     private int questionCounter = 0;
-    private int score = 0;
+    public static int score = 0;
     private static final int questionMax = 10;
 
     public void initGame() {
@@ -59,9 +60,11 @@ public class QuizGameController implements Initializable {
     }
     Question currentQuestion;
 
+    // to do: link this to result screen
     public void showResult() {
 
     }
+
     public void setQuestion() {
         ++ questionCounter;
 
