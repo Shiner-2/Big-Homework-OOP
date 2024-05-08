@@ -35,7 +35,8 @@ public class TrieDictionary extends Dictionary {
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
         for (Word w : words) {
-            writer.write(w.getWord() + w.getDefinition());
+            writer.write(w.getDefinition());
+            writer.write('\n');
         }
         writer.close();
     }
