@@ -6,16 +6,13 @@ import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static java.util.Arrays.*;
 
 public class QuizGame {
     private ArrayList<Question> questions = new ArrayList<>();
-    private Random rand = new Random();
+    private int counter = 0;
 
     public QuizGame() throws IOException {
         readFile(new File("src/main/resources/data/question.csv"));
@@ -28,6 +25,8 @@ public class QuizGame {
         for (String line : lines) {
             String[] f = line.split(",");
 
+            ++ count;
+
             String question = String.join(",", copyOfRange(f, 0, f.length - 5));
             String[] choices = copyOfRange(f, f.length - 5, f.length - 1);
             String answer = f[f.length - 1];
@@ -38,10 +37,18 @@ public class QuizGame {
 
 //            System.out.println(question);
             questions.add(new Question(question, choices, answer));
+
+            if (count >= 25) break;
         }
     }
 
+    public void setGame() {
+        counter = 0;
+        Collections.shuffle(questions);
+    }
+
     public Question getQuestion() {
-        return questions.get(rand.nextInt(questions.size()));
+        assert(counter < questions.size());
+        return questions.get(counter ++);
     }
 }

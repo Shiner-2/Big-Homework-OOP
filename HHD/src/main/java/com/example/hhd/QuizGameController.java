@@ -34,7 +34,11 @@ public class QuizGameController implements Initializable {
 
     private int questionCounter = 0;
     private int score = 0;
-    private static int questionMax = 10;
+    private static final int questionMax = 10;
+
+    public void initGame() {
+        gameData.setGame();
+    }
     Question currentQuestion;
     public void setQuestion() {
         ++ questionCounter;

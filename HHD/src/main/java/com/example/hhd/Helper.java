@@ -39,8 +39,9 @@ public class Helper {
         }
 
         int e = lines.get(0).indexOf('/') - 1;
-        if (e <= 0) e = lines.get(0).length();
-
+        if (e <= 0 || !lines.get(0).endsWith("/")) {
+            e = lines.get(0).length();
+        }
         String word = lines.get(0).substring(1, e);
 
         return new Word(word, String.join("\n", lines));
