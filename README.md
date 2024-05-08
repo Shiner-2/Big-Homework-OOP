@@ -23,9 +23,9 @@ Group HHD
 		</tr>
 		<tr>
 			<td>3</td>
-			<td></td>
-			<td></td>
-			<td>@vnu.edu.vn</td>
+			<td>Hoàng Mạnh Hùng</td>
+			<td>23020371</td>
+			<td>23020371@vnu.edu.vn</td>
 		</tr>
 	</table>
 </center>
