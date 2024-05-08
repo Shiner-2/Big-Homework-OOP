@@ -1,9 +1,12 @@
 package com.example.hhd;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,5 +42,13 @@ public class AppController {
         stage.setTitle("Translator");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void about(Event event) {
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("About us");
+        info.setContentText("This project is made for education purpose, by HHD group in UET university");
+        info.show();
     }
 }

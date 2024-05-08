@@ -99,7 +99,7 @@ public class DictionaryController implements Initializable {
     private void showWord(String word) {
         //System.out.println(word); // bold + header font
 
-        Text tx = new Text(word + "\n");
+        Text tx = new Text("\t"+word + "\n");
         tx.setStyle("-fx-font: 20px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
@@ -107,7 +107,7 @@ public class DictionaryController implements Initializable {
     private void showPronunciation(String pronunciation) {
         //System.out.println(pronunciation); // sound button
 
-        Text tx = new Text(pronunciation + "\n");
+        Text tx = new Text("\t"+pronunciation + "\n");
         tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
 
@@ -116,7 +116,7 @@ public class DictionaryController implements Initializable {
     private void showType(String type) {
         //System.out.println(type); // italic type
 
-        Text tx = new Text(type + "\n");
+        Text tx = new Text("\t"+type + "\n");
         tx.setStyle("-fx-font: italic 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
@@ -124,7 +124,7 @@ public class DictionaryController implements Initializable {
     private void showMeaning(String meaning, int index) {
         //System.out.println("\t" + index + ". " + meaning);
 
-        Text tx = new Text("\t" + index + ". " + meaning + "\n");
+        Text tx = new Text("\t\t" + index + ". " + meaning + "\n");
         tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
@@ -132,7 +132,7 @@ public class DictionaryController implements Initializable {
     private void showExample(String example, String meaning) {
         //System.out.println("\t\tex. " + example + " : " + meaning);
 
-        Text tx = new Text("\t\tex. " + example + " : " + meaning + "\n");
+        Text tx = new Text("\t\t\tex. " + example + " : " + meaning + "\n");
         tx.setStyle("-fx-font: 12px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }
@@ -140,7 +140,7 @@ public class DictionaryController implements Initializable {
     private void showPhrase(String phrase) {
         //System.out.println("phrase: " + phrase);
 
-        Text tx = new Text("phrase: " + phrase + "\n");
+        Text tx = new Text("\tphrase: " + phrase + "\n");
         tx.setStyle("-fx-font: 14px \"arial,sans-serif\";");
         wordDefinition.getChildren().add(tx);
     }

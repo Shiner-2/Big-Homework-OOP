@@ -55,6 +55,7 @@ public class ScrabbleBoardWordController extends AnchorPane {
     }
 
     public void setCharacter(String character) {
+
         this.character = character;
     }
 

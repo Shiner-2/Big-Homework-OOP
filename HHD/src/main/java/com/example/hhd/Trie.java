@@ -57,7 +57,7 @@ public class Trie {
             char currentChar = word_target.charAt(i);
 
             if (!pNode.next.containsKey(currentChar)) {
-                System.out.println("This word has not been inserted");
+                //System.out.println("This word has not been inserted");
                 return false;
             }
 
@@ -65,7 +65,7 @@ public class Trie {
         }
 
         if (pNode.current_word == null) {
-            System.out.println("This word has not been inserted");
+            //System.out.println("This word has not been inserted");
             return false;
         }
 
@@ -113,7 +113,7 @@ public class Trie {
             char currentChar = target.charAt(i);
 
             if (!pNode.next.containsKey(currentChar)) {
-                System.out.println("This word has not been inserted");
+                //System.out.println("This word has not been inserted");
                 return result;
             }
 

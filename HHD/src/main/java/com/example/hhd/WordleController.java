@@ -71,8 +71,7 @@ public class WordleController{
             btn.setDisable(true);
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setTitle("You lose");
-            a.setHeaderText("Noob");
-            a.setContentText(HiddenWord);
+            a.setContentText("The hidden word is: "+HiddenWord);
             a.show();
         }
     }

@@ -53,4 +53,22 @@ public class TranslatorController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    public void speakLeft(Event event) {
+        if(state==true) {
+            TTS.playSoundGoogleTranslateViToEn(TFLeft.getText());
+        }else{
+            TTS.playSoundGoogleTranslateEnToVi(TFLeft.getText());
+        }
+    }
+
+    @FXML
+    public void speakRight(Event event) {
+        if(state==false) {
+            TTS.playSoundGoogleTranslateViToEn(TFRight.getText());
+        }else{
+            TTS.playSoundGoogleTranslateEnToVi(TFRight.getText());
+        }
+    }
 }

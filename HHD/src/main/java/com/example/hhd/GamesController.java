@@ -33,6 +33,15 @@ public class GamesController {
         stage.show();
     }
 
+    public void LoadQuiz(Event event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Quiz.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Quiz");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void LoadScrabble(Event event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Scrabble.fxml"));

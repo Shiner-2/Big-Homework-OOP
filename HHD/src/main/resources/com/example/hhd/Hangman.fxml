@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hhd.HangmanController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e8e279;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.hhd.HangmanController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="200.0">
          <children>
@@ -34,21 +35,24 @@
                <image>
                   <Image url="@../../../img/images-removebg-preview-removebg-preview.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </AnchorPane>
       <VBox alignment="CENTER" layoutX="214.0" prefHeight="400.0" prefWidth="380.0">
          <children>
-            <HBox fx:id="HangmanHiddenWordContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-width: 10; -fx-border-color: black;" />
-            <HBox fx:id="HangmanFailCount" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-width: 10; -fx-border-color: black;">
+            <HBox fx:id="HangmanHiddenWordContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+            <HBox fx:id="HangmanFailCount" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label fx:id="HangmanFailCountLabel" alignment="CENTER" contentDisplay="CENTER" text="Label" textAlignment="CENTER" textFill="#3f3cbd">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
                </children></HBox>
-            <VBox fx:id="HangmanKeyBoardContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+            <VBox fx:id="HangmanKeyBoardContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <HBox fx:id="HangmanKeyBoardContainer1" alignment="CENTER" />
                   <HBox fx:id="HangmanKeyBoardContainer2" alignment="CENTER" />
