@@ -40,8 +40,18 @@ public class QuizGameController implements Initializable {
         gameData.setGame();
     }
     Question currentQuestion;
+
+    public void showResult() {
+
+    }
     public void setQuestion() {
         ++ questionCounter;
+
+        if (questionCounter > 10) {
+            showResult();
+            return;
+        }
+
         Question q = gameData.getQuestion();
         currentQuestion = q;
         question.setText(q.getQuestion());

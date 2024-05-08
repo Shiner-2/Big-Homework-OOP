@@ -44,11 +44,22 @@ public class TrieDictionary extends Dictionary {
     @Override
     public void insert(Word word) {
         trie.insert_word(word);
+        try {
+            exportToFile(new File("src/main/resources/data/anhviet109K.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public boolean delete(Word word) {
-        return trie.delete_word(word);
+        boolean canDeleted = trie.delete_word(word);
+        try {
+            exportToFile(new File("src/main/resources/data/anhviet109K.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return canDeleted;
     }
 
     @Override
