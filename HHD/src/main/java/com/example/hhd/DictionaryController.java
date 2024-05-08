@@ -198,7 +198,7 @@ public class DictionaryController implements Initializable {
         newWindow.setScene(new Scene(loader.load()));
         newWindow.show();
         newWindow.setOnCloseRequest(windowEvent -> {
-            System.out.println("close");
+            //System.out.println("close");
             try {
                 data = new TrieDictionary();
             } catch (IOException e) {
